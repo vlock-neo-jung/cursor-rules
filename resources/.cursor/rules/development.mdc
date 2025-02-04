@@ -32,3 +32,5 @@ globs:
 - 현재 단계 완료 승인 후 다음 단계 진행
 - 마지막 단계 완료 시 최종 검토 진행
 
+## 작업 완료
+- 참고: [git.mdc](mdc:.cursor/rules/git.mdc)

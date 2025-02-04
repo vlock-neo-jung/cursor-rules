@@ -20,6 +20,7 @@ globs:
 
 3. Task 완료 시
    - main 브랜치로 merge 후 main 브랜치로 이동
+   - remote 에 push
 
 ## Commit 메시지 규칙
 - feat: 새로운 기능 추가
