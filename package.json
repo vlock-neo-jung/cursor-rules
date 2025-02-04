@@ -1,0 +1,30 @@
+{
+  "name": "cursor-rules",
+  "version": "1.0.0",
+  "description": "CLI tool for copying files from resources directory",
+  "main": "dist/index.js",
+  "bin": {
+    "cursor-rules": "./dist/bin/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node src/bin/cli.ts",
+    "test": "jest",
+    "prepare": "npm run build"
+  },
+  "keywords": ["cli", "file-copy"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/cli-progress": "^3.11.6",
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^22.13.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "cli-progress": "^3.12.0",
+    "commander": "^13.1.0",
+    "fs-extra": "^11.3.0"
+  }
+}
