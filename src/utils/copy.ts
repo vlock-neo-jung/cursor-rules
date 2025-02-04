@@ -8,7 +8,6 @@ export interface CopyResult {
 }
 
 export async function copyResourceFiles(
-  sourcePath: string = "resources",
   targetPath: string = process.cwd()
 ): Promise<CopyResult> {
   const result: CopyResult = {
@@ -18,23 +17,31 @@ export async function copyResourceFiles(
   };
 
   try {
-    // 소스 디렉토리 존재 확인
+    // dist/utils에서 dist/resources로 이동
+    const sourcePath = path.resolve(__dirname, "../resources");
+
+    // resources 디렉토리 존재 확인
     if (!(await fs.pathExists(sourcePath))) {
-      throw new Error(`소스 디렉토리가 존재하지 않습니다: ${sourcePath}`);
+      throw new Error(
+        `패키지의 resources 폴더를 찾을 수 없습니다: ${sourcePath}\n` +
+          `패키지를 다시 설치하거나 resources 폴더가 포함된 버전으로 업데이트해주세요.`
+      );
     }
 
-    // 파일 복사 진행
-    await fs.copy(sourcePath, targetPath, {
-      overwrite: true,
-      errorOnExist: false,
-      filter: (src) => {
-        const relativePath = path.relative(sourcePath, src);
-        if (relativePath) {
-          result.copiedFiles.push(relativePath);
-        }
-        return true;
-      },
-    });
+    // resources 디렉토리 내의 파일/폴더 목록 가져오기
+    const entries = await fs.readdir(sourcePath);
+
+    // 각 파일/폴더를 대상 디렉토리로 복사
+    for (const entry of entries) {
+      const sourceFull = path.join(sourcePath, entry);
+      const targetFull = path.join(targetPath, entry);
+
+      await fs.copy(sourceFull, targetFull, {
+        overwrite: true,
+        errorOnExist: false,
+      });
+      result.copiedFiles.push(entry);
+    }
 
     return result;
   } catch (error) {

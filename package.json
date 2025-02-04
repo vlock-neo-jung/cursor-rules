@@ -1,13 +1,18 @@
 {
   "name": "cursor-rules",
-  "version": "1.0.0",
-  "description": "CLI tool for copying files from resources directory",
+  "version": "1.0.6",
+  "description": "CLI 패키지의 resources 폴더에서 파일들을 현재 디렉토리로 복사하는 도구",
   "main": "dist/index.js",
   "bin": {
-    "cursor-rules": "./dist/bin/cli.js"
+    "cursor-rules": "dist/bin/cli.js"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "tsc",
+    "clean": "rm -rf dist",
+    "copy-resources": "cp -r resources dist/",
+    "build": "npm run clean && tsc && npm run copy-resources",
     "start": "ts-node src/bin/cli.ts",
     "test": "jest",
     "prepare": "npm run build"
