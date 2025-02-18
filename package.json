@@ -1,7 +1,7 @@
 {
   "name": "cursor-rules",
-  "version": "1.0.7",
-  "description": "CLI 패키지의 resources 폴더에서 파일들을 현재 디렉토리로 복사하는 도구",
+  "version": "1.0.8",
+  "description": "Cursor 규칙 파일들을 글로벌 설정과 동기화하는 CLI 도구",
   "main": "dist/index.js",
   "bin": {
     "cursor-rules": "dist/bin/cli.js"
@@ -11,25 +11,24 @@
   ],
   "scripts": {
     "clean": "rm -rf dist",
-    "copy-resources": "cp -r resources dist/",
-    "build": "npm run clean && tsc && npm run copy-resources",
+    "build": "npm run clean && tsc",
     "start": "ts-node src/bin/cli.ts",
     "test": "jest",
     "prepare": "npm run build"
   },
-  "keywords": ["cli", "file-copy"],
+  "keywords": ["cli", "file-sync"],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/cli-progress": "^3.11.6",
     "@types/fs-extra": "^11.0.4",
+    "@types/inquirer": "^9.0.7",
     "@types/node": "^22.13.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"
   },
   "dependencies": {
-    "cli-progress": "^3.12.0",
     "commander": "^13.1.0",
-    "fs-extra": "^11.3.0"
+    "fs-extra": "^11.3.0",
+    "inquirer": "^8.2.6"
   }
 }
