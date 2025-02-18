@@ -5,7 +5,7 @@ globs: tasks/**/*.md
 # Task 문서 작성 규칙
 
 ## 문서 생성
-- 위치: tasks/{task-name}.md
+- 위치: {번호}.tasks/{task-name}.md
 - 문서는 새로운 task 시작 시 반드시 생성
 
 ## 문서 작성 순서
